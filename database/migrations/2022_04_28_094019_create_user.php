@@ -23,7 +23,7 @@ class CreateUser extends Migration
             $table->string('status');
             $table->string('alamat');
             $table->string('password');
-            $table->bigInteger('id_department')->unsigned();
+            $table->bigInteger('id_department')->unsigned()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
