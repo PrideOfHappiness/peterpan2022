@@ -13,7 +13,7 @@ class CreateDatabarang extends Migration
      */
     public function up()
     {
-        Schema::create('databarang', function (Blueprint $table) {
+        Schema::create('data_barang', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->string('nama_barang');
             $table->integer('stok');

@@ -13,7 +13,7 @@ class CreateKategoribarang extends Migration
      */
     public function up()
     {
-        Schema::create('kategoribarang', function (Blueprint $table) {
+        Schema::create('kategori_barang', function (Blueprint $table) {
             $table->id();
             $table->string('nama_kategori');
             $table->timestamps();
