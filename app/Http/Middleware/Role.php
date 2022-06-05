@@ -16,10 +16,14 @@ class Role
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->user()->status == $role){
-            return $next($request);
-        }
+        $roles = array_slice(func_get_args(), 2);
 
-        return redirect()->to(route('login'));
-    }
+        foreach($roles as $role) {
+            $user = \Auth::user()->status;
+            if($user == $role){
+                return $next($request);
+            }
+         }
+
+         return redirect('/');
 }
