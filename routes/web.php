@@ -67,3 +67,12 @@ Route::get('/notifmasuk', function () {
 Route::get('/print', function () {
     return view('/cetak');
 });
+
+// Login - Registrasi - Logout
+Route::get('/login',[LoginRegisLogoutController::class,'index'])->name('login');
+Route::post('/login',[LoginRegisLogoutController::class,'authenticate'])->name('loginPost');
+Route::post('/logout',[LoginRegisLogoutController::class,'logOut'])->name('logoutPost');
+
+
+// Home
+Route::get('/', [Controller::class,'index'])->name('dashboard');
