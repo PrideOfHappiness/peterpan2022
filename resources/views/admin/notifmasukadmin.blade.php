@@ -50,7 +50,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     <div class="card-footer clearfix">
-                <button type="button" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Loggout</button>
+                <form action="{{ route('logoutPost') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Logout</button>
+        </form>
       </div>
     </ul>
   </nav>
@@ -121,7 +124,7 @@
             </a>
 </li>
     </div>
-</aside>  
+</aside>
 <!-- /.sidebar-menu -->
 <!-- /.sidebar -->
     <!-- Content Wrapper. Contains page content -->
@@ -149,38 +152,45 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>Tanggal</th>
+                    <th>Tanggal Booking</th>
+                    <th>Tanggal Peminjaman</th>
+                    <th>Tanggal Kembali</th>
                     <th>Pengirim</th>
-                    <th>Jenis Pengajuan</th>
                     <th>Action</th>
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>28/03/22</td>
-                    <td>72190291</td>
-                    <td>Peminjaman</td>
-                    <td><a href="#" class="btn btn-danger">Hapus</a>
-                    <a href="#" class="btn btn-warning">Lihat</a></td>
-            </tr>
-                <tr>
-                    <td>29/03/22</td>
-                    <td>72190308</td>
-                    <td>Booking</td>
-                    <td><a href="#" class="btn btn-danger">Hapus</a>
-                    <a href="#" class="btn btn-warning">Lihat</a></td>
+                @foreach ($detailPeminjaman as $booking)
+                    <tr>
+                        <td>{{$booking->peminjamanFK->tgl_booking}}</td>
+                        <td>{{$booking->peminjamanFK->tgl_pinjam}}</td>
+                        <td>{{$booking->peminjamanFK->tgl_selesai}}</td>
+                        <td>{{$booking->peminjamanFK->userFK->nama}}</td>
+                        <td>
+                            <form action="{{ route('tolakBarangBookingPost') }}"  method="POST" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="idDetailPeminjaman" value="{{$booking->id}}">
+                                <button type="submit" class="btn btn-danger">Tolak</button>
+                            </form>
+                            <form action="{{ route('terimaBarangBookingPost') }}" method="POST" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="idDetailPeminjaman" value="{{$booking->id}}">
+                                <button type="submit" class="btn btn-success">Terima</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
-            </tr>
-        </tfoot>
+            </tbody>
     </table>
-    </div>    
-</div>
-    </div>    
-</div>    
     </div>
-</div> 
+</div>
+    </div>
+</div>
+    </div>
+</div>
 </section>
-</aside> 
+</aside>
 
 <!-- /.Bagian Copyright content-wrapper -->
 <footer class="main-footer">

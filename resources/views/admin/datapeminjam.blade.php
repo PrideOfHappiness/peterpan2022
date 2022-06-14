@@ -47,7 +47,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     <div class="card-footer clearfix">
-                <button type="button" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Loggout</button>
+                <form action="{{ route('logoutPost') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Logout</button>
+        </form>
       </div>
     </ul>
   </nav>
@@ -147,48 +150,32 @@
                   <thead>
                   <tr>
                     <th>Check</th>
-                    <th>NIK</th>
+                    <th>Peminjam</th>
                     <th>Barang dipinjam</th>
                     <th>Batas Waktu</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><div class="icheck-primary">
-                        <input type="checkbox" value="" id="check1">
-                        <label for="check1"></label>
-                      </div></td>
-                    <td>72190291</td>
-                    <td>Web Cam Logitech C615</td>
-                    <td>30 Maret 2022<td>
-            </tr>
-            <tr>
-                    <td><div class="icheck-primary">
-                        <input type="checkbox" value="" id="check2">
-                        <label for="check1"></label>
-                      </div></td>
-                    <td>72190291</td>
-                    <td>Mic Audio-TechnicaBP40</td>
-                    <td>30 Maret 2022<td>
-            </tr>
-            <tr>
-                    <td><div class="icheck-primary">
-                        <input type="checkbox" value="" id="check1">
-                        <label for="check1"></label>
-                      </div></td>
-                    <td>72190291</td>
-                    <td>Modem SmartfrenM25</td>
-                    <td>30 Maret 2022<td>
-            </tr>
-        </tfoot>
+                    @foreach ($detailPinjaman as $pinjaman)
+                        <tr>
+                            <td><div class="icheck-primary">
+                                <input type="checkbox" value="" id="check1">
+                                <label for="check1"></label>
+                            </div></td>
+                            <td>{{$pinjaman->peminjamanFK->userFK->nama}}</td>
+                            <td>{{$pinjaman->barangFK->nama_barang}}</td>
+                            <td>{{$pinjaman->peminjamanFK->tgl_selesai}}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
     </table>
-    </div>    
+    </div>
 </div>
-    </div>    
-</div>    
+    </div>
+</div>
 </div>
 </section>
-</aside> 
+</aside>
 <!-- /.Bagian Copyright content-wrapper -->
 <footer class="main-footer">
     <strong>Copyright &copy; Renaldi-Jevon <a href="https://adminlte.io">UKDW P.P</a>.</strong>

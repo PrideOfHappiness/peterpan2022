@@ -47,7 +47,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     <div class="card-footer clearfix">
-                <button type="button" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Loggout</button>
+        <form action="{{ route('logoutPost') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Logout</button>
+        </form>
       </div>
     </ul>
   </nav>
@@ -152,71 +155,35 @@
                     <th>Nama Barang</th>
                     <th>Stok</th>
                     <th>Status</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Web Cam Logitech C615</td>
-                    <td>3</td>
-                    <td>Tersedia<td>
-            </tr>
-                  <tr>
-                    <td>1.1</td>
-                    <td>Web Cam Logitech C310 </td>
-                    <td>5</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Mic Audio-Technica BP40</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>2.1</td>
-                    <td>Mic Rode PodMic</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>2.2</td>
-                    <td>Mic Neuman BCM705</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Modem Smartfren M2S</td>
-                    <td>5</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>3.1</td>
-                    <td>Modem Smartfren M2Y</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>3.2</td>
-                    <td>Modem Huawei E5373s</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
+                    @foreach ($dataBarang as $barang)
+                        <tr>
+                            <td>{{$barang->id}}</td>
+                            <td>{{$barang->nama_barang}}</td>
+                            <td>{{$barang->stok}}</td>
+                            <td>{{$barang->status}}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning" >Edit</button>
+                                <button type="button" class="btn btn-danger" >Hapus</button>
+                            </td>
+                        </tr>
+                    @endforeach
             <div class="card-footer">
-                  <button type="button" class="btn btn-primary" >Tambah</button>
-                  <button type="button" class="btn btn-warning" >Edit</button>
-                </div>
+                <button type="button" class="btn btn-primary" >Tambah</button>
+            </div>
         </tfoot>
     </table>
-    </div>    
-</div>
-    </div>    
-</div>    
     </div>
-</div> 
+</div>
+    </div>
+</div>
+    </div>
+</div>
 
-</aside> 
+</aside>
 <!-- /.Bagian Copyright content-wrapper -->
 <footer class="main-footer">
     <strong>Copyright &copy; Renaldi-Jevon <a href="https://adminlte.io">UKDW P.P</a>.</strong>

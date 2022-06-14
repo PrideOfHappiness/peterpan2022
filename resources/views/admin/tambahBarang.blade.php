@@ -174,7 +174,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-            
+
             <div class="card-body">
                   <div class="form-group">
                     <label for="InputID">ID_Barang</label>
@@ -188,7 +188,7 @@
                 <div class="form-group">
                     <label for="Inputstok">Stok</label>
                     <input type="string" class="form-control" id="Stok Barang">
-                    
+
 </div>
                  <div class="form-group">
                     <label>Status</label>
