@@ -182,11 +182,11 @@
                     <input type="string" class="form-control" id="inputID">
 </div>
             <div class="form-group">
-                    <label for="inputstok">Nama Barang</label>
+                    <label for="inputBarang">Nama Barang</label>
                     <input type="string" class="form-control" id="NamaBarang">
 </div>
                 <div class="form-group">
-                    <label for="Inputstok">Stok</label>
+                    <label for="InputStok">Stok</label>
                     <input type="string" class="form-control" id="Stok Barang">
 
 </div>
