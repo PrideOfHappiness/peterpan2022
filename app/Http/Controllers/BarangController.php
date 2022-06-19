@@ -7,9 +7,18 @@ use App\Models\dataBarang;
 
 class BarangController extends Controller
 {
+
+    public function barang(){
+        return view('admin/databarangadmin');
+    }
+
+    public static function formTambah(){
+        return view('admin/tambahBarang');
+    }
+
     public function index() {
         $posts = dataBarang::latest()->get();
-        return view('posts.index', compact('posts'));
+        return view('admin/databarangadmin', compact('posts'));
     }
 
     public function add() {
@@ -29,7 +38,7 @@ class BarangController extends Controller
 
         if ($post) {
             return redirect()
-                ->route('post.index')
+                ->route('admin/databarangadmin')
                 ->with([
                     'success' => 'New post has been created successfully'
                 ]);

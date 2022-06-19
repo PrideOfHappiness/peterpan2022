@@ -2,6 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\LoginRegisController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangDibookingController;
+use App\Http\Controllers\BarangDipinjamController;
+use App\Http\Controllers\DetailBarangController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('/login');
 });
@@ -42,7 +50,7 @@ Route::get('/validasi', function () {
 Route::get('/barang', function () {
     return view('dosen/databarangdosen');
 });
-Route::get('/barang', function () {
+Route::get('/barangadmin', function () {
     return view('admin/databarangadmin');
 });
 Route::get('/formnotif', function () {
@@ -67,6 +75,7 @@ Route::get('/notifmasuk', function () {
 Route::get('/print', function () {
     return view('/cetak');
 });
+*/
 
 // Login - Registrasi - Logout
 Route::get('/login',[LoginRegisLogoutController::class,'index'])->name('login');
@@ -76,3 +85,22 @@ Route::post('/logout',[LoginRegisLogoutController::class,'logOut'])->name('logou
 
 // Home
 Route::get('/', [Controller::class,'index'])->name('dashboard');
+
+//Barang
+Route::get('/admin/tambahbarang',[BarangController::class,'index'])->name('formTambah');
+Route::post('/admin/tambahBarang',[BarangController::class,'index'])->name('tambah');
+
+
+// DetaiBarang
+Route::get('/admin/barang', [DetailBarangController::class,'index'])->name('DetailBarang');
+
+
+// BarangDipinjam
+Route::get('/dipinjam_barang', [BarangDipinjamController::class,'index'])->name('BarangDipinjam');
+
+
+// BarangDibooking
+Route::get('/dibooking_barang', [BarangDibookingController::class,'index'])->name('BarangDibooking');
+Route::post('/tolak_booking', [BarangDibookingController::class,'tolakBarangPost'])->name('tolakBarangBookingPost');
+Route::post('/terima_booking', [BarangDibookingController::class,'terimaBarangPost'])->name('terimaBarangBookingPost');
+
