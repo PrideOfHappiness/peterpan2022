@@ -91,7 +91,7 @@
             </a>
 </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link active">
+            <a href="/barang" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Barang
@@ -118,7 +118,7 @@
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
-                Laporan Pengembalian.
+                Laporan Pengembalian
             </p>
             </a>
 </li>
@@ -161,7 +161,7 @@
               <div class="icon">
                 <i class="nav-icon fas fa-th"></i>
               </div>
-              <a href="#" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="/barang" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

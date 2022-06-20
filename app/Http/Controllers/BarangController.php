@@ -7,19 +7,14 @@ use App\Models\dataBarang;
 
 class BarangController extends Controller
 {
-
-    public function barang(){
-        return view('admin/databarangadmin');
-    }
-
     public static function formTambah(){
-        return view('admin/tambahBarang');
+        return view('admin.databarangadmin');
     }
 
-    public function index() {
+    /*public function index() {
         $posts = dataBarang::latest()->get();
-        return view('admin/databarangadmin', compact('posts'));
-    }
+        return view('admin.databarangadmin', compact('posts'));
+    }*/
 
     public function add() {
         $this->validate($request, [
@@ -38,7 +33,7 @@ class BarangController extends Controller
 
         if ($post) {
             return redirect()
-                ->route('admin/databarangadmin')
+                ->route('admin.databarangadmin')
                 ->with([
                     'success' => 'New post has been created successfully'
                 ]);
@@ -71,7 +66,7 @@ class BarangController extends Controller
 
         if ($post) {
             return redirect()
-                ->route('post.index')
+                ->route('admin.databarangadmin')
                 ->with([
                     'success' => 'New post has been created successfully'
                 ]);
@@ -91,13 +86,13 @@ class BarangController extends Controller
 
         if ($post) {
             return redirect()
-                ->route('post.index')
+                ->route('admin.databarangadmin')
                 ->with([
                     'success' => 'Post has been deleted successfully'
                 ]);
         } else {
             return redirect()
-                ->route('post.index')
+                ->route('admin.databarangadmin')
                 ->with([
                     'error' => 'Some problem has occurred, please try again'
                 ]);

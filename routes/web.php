@@ -85,14 +85,15 @@ Route::post('/logout',[LoginRegisLogoutController::class,'logOut'])->name('logou
 
 // Home
 Route::get('/', [Controller::class,'index'])->name('dashboard');
+Route::get('/dashboard', [Controller::class,'index'])->name('dashboard');
 
 //Barang
 Route::get('/admin/tambahbarang',[BarangController::class,'index'])->name('formTambah');
-Route::post('/admin/tambahBarang',[BarangController::class,'index'])->name('tambah');
+Route::post('/admin/tambahBarang',[BarangController::class,'index'])->name('add');
 
 
 // DetaiBarang
-Route::get('/admin/barang', [DetailBarangController::class,'index'])->name('DetailBarang');
+Route::get('/barang', [DetailBarangController::class,'index'])->name('DetailBarang');
 
 
 // BarangDipinjam
@@ -103,4 +104,11 @@ Route::get('/dipinjam_barang', [BarangDipinjamController::class,'index'])->name(
 Route::get('/dibooking_barang', [BarangDibookingController::class,'index'])->name('BarangDibooking');
 Route::post('/tolak_booking', [BarangDibookingController::class,'tolakBarangPost'])->name('tolakBarangBookingPost');
 Route::post('/terima_booking', [BarangDibookingController::class,'terimaBarangPost'])->name('terimaBarangBookingPost');
+
+// Home Dosen
+Route::get('/', [DosenController::class,'index'])->name('dashboardDosen');
+
+// BarangTersedia
+Route::get('/barang_tersedia', [BarangTersediaController::class,'index'])->name('barangTersedia');
+Route::post('/barang_tersedia', [BarangTersediaController::class,'pinjamPost'])->name('pinjamBarang');
 

@@ -166,13 +166,13 @@
                             <td>{{$barang->stok}}</td>
                             <td>{{$barang->status}}</td>
                             <td>
-                                <button type="button" class="btn btn-warning" >Edit</button>
-                                <button type="button" class="btn btn-danger" >Hapus</button>
+                                <a type="button" class="btn btn-warning" >Edit</a>
+                                <a type="button" class="btn btn-danger" >Hapus</a>
                             </td>
                         </tr>
                     @endforeach
             <div class="card-footer">
-                <button type="button" class="btn btn-primary" >Tambah</button>
+                <a type="button" class="btn btn-primary" href="/admin/tambahbarang" >Tambah Barang</a>
             </div>
         </tfoot>
     </table>

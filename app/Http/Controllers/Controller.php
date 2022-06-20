@@ -17,4 +17,8 @@ class Controller extends BaseController
             'totalBooking' => detailPeminjaman::where('status','=','BOOKING')->orderBy('id', 'DESC')->count()
         ]);
     }
+
+    public function dashboard(){
+        return view('admin/dashboard');
+    }
 }
