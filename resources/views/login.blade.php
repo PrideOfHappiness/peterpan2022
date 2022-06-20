@@ -25,7 +25,7 @@
 
     <div class="card-body">
         <p class="login-box-msg">Silahkan Masukan Username dan Password </p>
-        <form action="/dosen/dashboard" method="post">
+        <form action="/login" method="post">
         <div class="input-group mb-3">
         <input type="string" class="form-control" placeholder="Username">
         <div class="input-group-append">
@@ -43,7 +43,7 @@
 </div>
 </div>
     <div class="col-4">
-    <a href="/dosen/dashboard"><button>Masuk</button></a>
+    <a href="/login"><button>Masuk</button></a>
 </div>
     </form>
 </div>

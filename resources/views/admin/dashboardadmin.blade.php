@@ -51,8 +51,11 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     <div class="card-footer clearfix">
-                <button type="button" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Loggout</button>
-      </div>
+        <form action="{{ route('logoutPost') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Logout</button>
+        </form>
+    </div>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -91,7 +94,7 @@
             </a>
 </li>
           <li class="nav-item">
-            <a href="/barang" class="nav-link active">
+            <a href="pages/widgets.html" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Data Barang
@@ -118,7 +121,7 @@
             <a href="#" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
-                Laporan Pengembalian
+                Laporan Pengembalian.
             </p>
             </a>
 </li>
@@ -150,26 +153,25 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6" onclick="window.location='{{ route('DetailBarang') }}'"  >
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-info" >
               <div class="inner">
                 <h3>50</h3>
-
                 <p>Barang Tersedia</p>
               </div>
               <div class="icon">
                 <i class="nav-icon fas fa-th"></i>
               </div>
-              <a href="/barang" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="#" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6" onclick="window.location='{{ route('BarangDipinjam') }}'">
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>5<sup style="font-size: 20px"></sup></h3>
+                <h3>{{$totalPinjam}}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Barang yang dipinjam</p>
               </div>
@@ -180,12 +182,12 @@
             </div>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
+          <div class="col-lg-3 col-6" onclick="window.location='{{ route('BarangDibooking') }}'">
             <!-- small box -->
             <div class="small-box bg-warning">
-            
+
               <div class="inner">
-                <h3>3</h3>
+                <h3>{{$totalBooking}}</h3>
 
                 <p>Notifikasi Pengajuan</p>
               </div>

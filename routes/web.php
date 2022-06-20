@@ -3,11 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\LoginRegisController;
+use App\Http\Controllers\LoginRegisLogoutController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangDibookingController;
 use App\Http\Controllers\BarangDipinjamController;
 use App\Http\Controllers\DetailBarangController;
+use App\Http\Controllers\BarangTersediaController;
+use App\Http\Controllers\DosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,7 +108,7 @@ Route::post('/tolak_booking', [BarangDibookingController::class,'tolakBarangPost
 Route::post('/terima_booking', [BarangDibookingController::class,'terimaBarangPost'])->name('terimaBarangBookingPost');
 
 // Home Dosen
-Route::get('/', [DosenController::class,'index'])->name('dashboardDosen');
+Route::get('/dosen', [DosenController::class,'index'])->name('dashboardDosen');
 
 // BarangTersedia
 Route::get('/barang_tersedia', [BarangTersediaController::class,'index'])->name('barangTersedia');

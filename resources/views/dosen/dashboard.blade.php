@@ -50,7 +50,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     <div class="card-footer clearfix">
-                <button type="button" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Loggout</button>
+        <form action="{{ route('logoutPost') }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Logout</button>
+        </form>
       </div>
     </ul>
   </nav>
@@ -125,7 +128,7 @@
                 </a>
               </li>
               </ul>
-</li> 
+</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -133,7 +136,7 @@
                 Riwayat Peminjaman
               </p>
             </a>
-   
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -197,7 +200,7 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
-            
+
               <div class="inner">
                 <h3>3</h3>
 

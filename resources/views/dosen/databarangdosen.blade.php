@@ -51,7 +51,10 @@
     </ul>
     <ul class="navbar-nav ml-auto">
     <div class="card-footer clearfix">
-                <button type="button" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Loggout</button>
+                <form action="{{ route('logoutPost') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-danger float-right"><i class="fas fa-skull"></i> Logout</button>
+                </form>
       </div>
     </ul>
   </nav>
@@ -73,7 +76,7 @@
           <img src="style/dist/img/avatar01.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Jevon Hendro S</a>
+          <a href="#" class="d-block">{{Auth::user()->nama}}</a>
         </div>
       </div>
 
@@ -126,7 +129,7 @@
                 </a>
               </li>
               </ul>
-</li> 
+</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
@@ -134,7 +137,7 @@
                 Riwayat Peminjaman
               </p>
             </a>
-   
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -167,71 +170,64 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                   <tr>
-                    <th>ID_Barang</th>
                     <th>Nama Barang</th>
                     <th>Stok</th>
-                    <th>Status</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Web Cam Logitech C615</td>
-                    <td>3</td>
-                    <td>Tersedia<td>
-            </tr>
-                  <tr>
-                    <td>1.1</td>
-                    <td>Web Cam Logitech C310 </td>
-                    <td>5</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Mic Audio-Technica BP40</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>2.1</td>
-                    <td>Mic Rode PodMic</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>2.2</td>
-                    <td>Mic Neuman BCM705</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Modem Smartfren M2S</td>
-                    <td>5</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>3.1</td>
-                    <td>Modem Smartfren M2Y</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
-                  <tr>
-                    <td>3.2</td>
-                    <td>Modem Huawei E5373s</td>
-                    <td>3</td>
-                    <td>Tersedia</td>
-            </tr>
+                    @foreach ($dataBarang as $barang)
+                        <tr>
+                            <td>{{$barang->nama_barang}}</td>
+                            <td>{{$barang->stok}}</td>
+                            <td>
+                                <form action="{{ route('pinjamBarang') }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id_peminjam" value="{{Auth::user()->id}}">
+                                    <input type="hidden" name="id_barang" value="{{$barang->id}}">
+                                    <input type="hidden" name="tgl_booking" value="{{Carbon\Carbon::now()->toDateTimeString()}}">
+
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for=""  class="form-label">Tanggal Pinjam</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" name="tgl_pinjam" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3" >
+                                            <label for=""  class="form-label">Tanggal Kembali</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" name="tgl_selesai" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3" >
+                                            <label for=""  class="form-label">Total Dipinjam</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" name="total_stok_dipinjam" class="form-control" placeholder="Contoh : 1">
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-success" >Pinjam</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+
         </tfoot>
     </table>
-    </div>    
-</div>
-    </div>    
-</div>    
     </div>
-</div> 
+</div>
+    </div>
+</div>
+    </div>
+</div>
 
-</aside> 
+</aside>
 <!-- /.Bagian Copyright content-wrapper -->
 <footer class="main-footer">
     <strong>Copyright &copy; Renaldi-Jevon <a href="https://adminlte.io">UKDW P.P</a>.</strong>
